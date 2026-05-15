@@ -13,26 +13,58 @@ NoBST* criarNoBST(int valor, char cont) {
     return novo;
 }
 
+
 NoBST* inserirBST(NoBST* raiz, int valor, char cont) {
+    // Se a árvore estiver vazia, o novo nó é a raiz
     if (raiz == NULL) {
         return criarNoBST(valor, cont);
     }
-    if (valor < raiz->chave) {
-        raiz->esq = inserirBST(raiz->esq, valor, cont);
-    } else if (valor > raiz->chave) {
-        raiz->dir = inserirBST(raiz->dir, valor, cont);
+
+    NoBST* atual = raiz;
+    NoBST* pai = NULL;
+
+    // Desce na árvore até encontrar uma folha (NULL) ou achar a chave
+    while (atual != NULL) {
+        pai = atual; // Guarda a referência do nó acima
+        
+        if (valor == atual->chave) {
+            // A chave já existe. Como é uma BST, ignoramos a duplicata.
+            return raiz; 
+        } else if (valor < atual->chave) {
+            atual = atual->esq;
+        } else {
+            atual = atual->dir;
+        }
     }
+
+    // Cria o nó apenas quando achar a posição correta
+    NoBST* novo = criarNoBST(valor, cont);
+
+    // Conecta o novo nó ao pai correto
+    if (valor < pai->chave) {
+        pai->esq = novo;
+    } else {
+        pai->dir = novo;
+    }
+
     return raiz;
 }
 
+
 NoBST* buscarBST(NoBST* raiz, int valor) {
-    if (raiz == NULL || raiz->chave == valor) {
-        return raiz;
+    NoBST* atual = raiz;
+    
+    while (atual != NULL) {
+        if (valor == atual->chave) {
+            return atual; // Encontrou
+        } else if (valor < atual->chave) {
+            atual = atual->esq; 
+        } else {
+            atual = atual->dir; 
+        }
     }
-    if (valor < raiz->chave) {
-        return buscarBST(raiz->esq, valor);
-    }
-    return buscarBST(raiz->dir, valor);
+    
+    return NULL; // Chegou numa folha e não encontrou
 }
 
 void liberarBST(NoBST* raiz) {
@@ -43,8 +75,7 @@ void liberarBST(NoBST* raiz) {
     }
 }
 
-
-    void imprimirPreFixado(NoBST* raiz) {
+void imprimirPreFixado(NoBST* raiz) {
     if (raiz != NULL) {
         printf("%d ", raiz->chave);
         imprimirPreFixado(raiz->esq);
@@ -74,4 +105,12 @@ void imprimeEmOrdemArquivo(NoBST* raiz, FILE* arquivo) {
         fputc(raiz->conteudo, arquivo); 
         imprimeEmOrdemArquivo(raiz->dir, arquivo);
     }
+}
+
+// Funcao auxiliar recursiva para achar a altura da BST comum
+int alturaBST(NoBST* raiz) {
+    if (raiz == NULL) return 0;
+    int altEsq = alturaBST(raiz->esq);
+    int altDir = alturaBST(raiz->dir);
+    return (altEsq > altDir ? altEsq : altDir) + 1;
 }

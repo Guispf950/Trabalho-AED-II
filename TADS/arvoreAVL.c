@@ -92,15 +92,20 @@ NoAVL* inserirAVL(NoAVL* no, int valor, char cont) {
 }
 
 NoAVL* buscarAVL(NoAVL* raiz, int valor) {
-    if (raiz == NULL || raiz->chave == valor) {
-        return raiz;
+    NoAVL* atual = raiz;
+    
+    while (atual != NULL) {
+        if (valor == atual->chave) {
+            return atual; // Encontrou
+        } else if (valor < atual->chave) {
+            atual = atual->esq; 
+        } else {
+            atual = atual->dir; 
+        }
     }
-    if (valor < raiz->chave) {
-        return buscarAVL(raiz->esq, valor);
-    }
-    return buscarAVL(raiz->dir, valor);
+    
+    return NULL; // Não encontrou
 }
-
 void liberarAVL(NoAVL* raiz) {
     if (raiz != NULL) {
         liberarAVL(raiz->esq);

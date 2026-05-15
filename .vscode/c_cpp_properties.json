@@ -4,7 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/Utils"
+                "${workspaceFolder}/Utils",
+                "${workspaceFolder}/TADS"
             ],
             "defines": [
                 "_DEBUG",

@@ -25,11 +25,11 @@ q2:
 
 # Questão 3: Desempenho BST vs Vetor
 q3:
-	$(CC) $(CFLAGS) $(MAIN_DIR)/questao3main.c $(BST) $(VETOR) -o questao3
+	$(CC) $(CFLAGS) $(MAIN_DIR)/questao3main.c $(BST) $(VETOR) $(UTIL) -o questao3
 
 # Questão 4: Desempenho AVL vs BST
 q4:
-	$(CC) $(CFLAGS) $(MAIN_DIR)/questao4main.c $(BST) $(AVL) -o questao4
+	$(CC) $(CFLAGS) $(MAIN_DIR)/questao4main.c $(BST) $(AVL) $(UTIL) -o questao4
 
 # Limpeza dos executáveis
 clean:

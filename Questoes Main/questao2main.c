@@ -8,7 +8,7 @@
 int main() {
     NoBST* arvore = NULL;
     
-    char mensagemTexto[] = "TRABALHO DE AED 2 - Questão 2- PACOTES DE TEXTO PARA TESTE DE ARVORE BINARIA DE BUSCA";
+    char mensagemTexto[] = "TRABALHO DE AED2 - Questão 2 - PACOTES DE TEXTO PARA TESTE DE ARVORE BINARIA DE BUSCA";
     int len = strlen(mensagemTexto);
     
     // Adiciona ~10% de pacotes repetidos para simular retransmissão

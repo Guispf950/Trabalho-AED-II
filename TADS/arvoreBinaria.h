@@ -18,5 +18,5 @@ void imprimirCentral(NoBST* raiz);
 void imprimirPosFixado(NoBST* raiz);
 
 void imprimeEmOrdemArquivo(NoBST* raiz, FILE* arquivo);
-
+int alturaBST(NoBST* raiz);
 #endif

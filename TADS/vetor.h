@@ -9,7 +9,7 @@ typedef struct {
 // Funções de Gerenciamento e Utilidade
 VetorTAD* criar_vetor(int tamanho);
 void free_vetor(VetorTAD *v);
-int rand_grande();
+
 void preencher_aleatorio_desordenado(VetorTAD *v);
 void preencher_aleatorio_ordenado(VetorTAD *v);
 void copiar_vetor(VetorTAD *origem, VetorTAD *destino);

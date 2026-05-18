@@ -16,11 +16,14 @@ int main() {
 
     NoBST* arvore = NULL;
     printf("Inserindo dados na Arvore...\n");
+
     for (int i = 0; i < N; i++) {
-        arvore = inserirBST(arvore, v->dados[i], 'X'); 
+        arvore = inserirBST(arvore, v->dados[i], 'X'); // Como a arvore tem 2 campos (chave e conteudo),
+                                                // o campo conteudo é preenchido com 'X' apenas para utilizar a
+                                                // o mesmo TAD, já que o foco é comparar os valores inteiros (chaves)
     }
 
-    printf("Ordenando o Vetor com QuickSort...\n");
+    printf("Ordenando o Vetor com QuickSort...\n"); //Ordena para realizar a busca binária depois
     quick_sort(v, 0, v->tamanho - 1);
 
     printf("\n=== ANALISE DE MEMORIA ===\n");
@@ -35,7 +38,7 @@ int main() {
         chaves_busca[i] = v->dados[rand() % N]; 
     }
     for (int i = 15; i < 30; i++) {
-        chaves_busca[i] = rand_grande() + 100000000; 
+        chaves_busca[i] = rand_grande(); 
     }
 
     
@@ -51,21 +54,21 @@ int main() {
         int alvo = chaves_busca[i];
         double tempo_vetor_atual, tempo_arvore_atual;
 
-        // --- Cronometrando Vetor ---
+        //Cronometrando Vetor
         inicio = obter_tempo_atual();
         busca_binaria(v, alvo);
         fim = obter_tempo_atual();
         tempo_vetor_atual = fim - inicio;
         tempo_total_vetor += tempo_vetor_atual;
 
-        // --- Cronometrando Arvore ---
+        //Cronometrando Arvore
         inicio = obter_tempo_atual();
         buscarBST(arvore, alvo);
         fim = obter_tempo_atual();
         tempo_arvore_atual = fim - inicio;
         tempo_total_arvore += tempo_arvore_atual;
 
-        // Imprime a linha da tabela (%.9f para manter a precisao)
+        // Imprime a linha da tabela com 9 casas decimais (%.9f) para manter a precisao
         printf("Busca %-4d | %-15d | %.9f     | %.9f\n", i + 1, alvo, tempo_vetor_atual, tempo_arvore_atual);
     }
 

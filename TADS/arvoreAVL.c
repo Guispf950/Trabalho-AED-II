@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "arvoreAVL.h"
 
-// Funções auxiliares (uso interno)
+
 int altura(NoAVL *N) {
     if (N == NULL) return 0;
     return N->altura;
@@ -45,7 +45,6 @@ int obterBalanceamento(NoAVL *N) {
     return altura(N->esq) - altura(N->dir);
 }
 
-// Implementação das funções públicas da interface
 NoAVL* criarNoAVL(int valor, char cont) {
     NoAVL* novo = (NoAVL*)malloc(sizeof(NoAVL));
     if (novo) {

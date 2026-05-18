@@ -1,6 +1,7 @@
 #include "vetor.h"
 #include <stdlib.h>
 #include <string.h>
+#include <utils.h>
 
 //GERENCIAMENTO DO TAD 
 
@@ -18,9 +19,6 @@ void free_vetor(VetorTAD *v) {
     }
 }
 
-int rand_grande() {
-    return (rand() * 32768) + rand();
-}
 
 void preencher_aleatorio_desordenado(VetorTAD *v) {
     for (int i = 0; i < v->tamanho; i++) {

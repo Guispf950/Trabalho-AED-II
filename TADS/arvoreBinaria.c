@@ -23,12 +23,12 @@ NoBST* inserirBST(NoBST* raiz, int valor, char cont) {
     NoBST* atual = raiz;
     NoBST* pai = NULL;
 
-    // Desce na árvore até encontrar uma folha (NULL) ou achar a chave
+    // Desce na árvore até encontrar uma folha (NULL) ou achar o mesmo valor
     while (atual != NULL) {
-        pai = atual; // Guarda a referência do nó acima
+        pai = atual; // Guarda o ponteiro do nó acima
         
         if (valor == atual->chave) {
-            // A chave já existe. Como é uma BST, ignoramos a duplicata.
+            // Se a chave já existe ignoramos o dado duplicado
             return raiz; 
         } else if (valor < atual->chave) {
             atual = atual->esq;
@@ -37,10 +37,10 @@ NoBST* inserirBST(NoBST* raiz, int valor, char cont) {
         }
     }
 
-    // Cria o nó apenas quando achar a posição correta
+    // Cria o nó após achar a posição correta
     NoBST* novo = criarNoBST(valor, cont);
 
-    // Conecta o novo nó ao pai correto
+    // O ponteiro do nó pai aponta para esse novo nó 
     if (valor < pai->chave) {
         pai->esq = novo;
     } else {
@@ -107,10 +107,13 @@ void imprimeEmOrdemArquivo(NoBST* raiz, FILE* arquivo) {
     }
 }
 
-// Funcao auxiliar recursiva para achar a altura da BST comum
 int alturaBST(NoBST* raiz) {
     if (raiz == NULL) return 0;
     int altEsq = alturaBST(raiz->esq);
     int altDir = alturaBST(raiz->dir);
-    return (altEsq > altDir ? altEsq : altDir) + 1;
+    if(altEsq > altDir){
+        return altEsq + 1;
+    } else{
+        return altDir + 1;
+    }
 }

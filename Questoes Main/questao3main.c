@@ -27,8 +27,12 @@ int main() {
     quick_sort(v, 0, v->tamanho - 1);
 
     printf("\n=== ANALISE DE MEMORIA ===\n");
-    printf("Vetor: ~%llu MB alocados.\n", (unsigned long long)(N * sizeof(int)) / (1024 * 1024));
-    printf("Arvore: ~%llu MB alocados.\n", (unsigned long long)(N * sizeof(NoBST)) / (1024 * 1024));
+    double memoriaVetor = (double)(N * sizeof(int)) / (1024.0 * 1024.0);
+
+    double memoriaArvore = (double)(N * sizeof(NoBST)) / (1024.0 * 1024.0);
+
+    printf("Vetor: %.2f MB alocados.\n", memoriaVetor);
+    printf("Arvore: %.2f MB alocados.\n", memoriaArvore);
 
     int chaves_busca[30];
     

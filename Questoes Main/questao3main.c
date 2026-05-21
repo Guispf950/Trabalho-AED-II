@@ -35,7 +35,7 @@ int main() {
     srand(time(NULL)); 
     
     for (int i = 0; i < 15; i++) {
-        chaves_busca[i] = v->dados[rand() % N]; 
+        chaves_busca[i] = v->dados[rand_grande() % N]; 
     }
     for (int i = 15; i < 30; i++) {
         chaves_busca[i] = rand_grande(); 
